@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Result System</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 30px; }
+    table { margin: auto; border-collapse: collapse; }
+    td, th { padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Student Result System</h1>
+  <input type="text" id="name" placeholder="Enter student name" />
+  <input type="number" id="marks" placeholder="Enter marks" />
+  <button onclick="addResult()">Add</button>
+  <table id="results">
+    <tr><th>Name</th><th>Marks</th></tr>
+  </table>
+  <script>
+    function addResult() {
+      const name = document.getElementById("name").value;
+      const marks = document.getElementById("marks").value;
+      const table = document.getElementById("results");
+      if (name && marks) {
+        const row = table.insertRow(-1);
+        row.insertCell(0).innerText = name;
+        row.insertCell(1).innerText = marks;
+        document.getElementById("name").value = '';
+        document.getElementById("marks").value = '';
+      }
+    }
+  </script>
+</body>
+</html>
