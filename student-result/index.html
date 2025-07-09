@@ -2,31 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ToDo App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Result System</title>
   <style>
     body { font-family: Arial; text-align: center; padding: 30px; }
-    input, button { padding: 8px; margin: 5px; }
-    ul { list-style: none; padding: 0; }
-    li { margin: 10px 0; background: #eee; padding: 10px; }
+    table { margin: auto; border-collapse: collapse; }
+    td, th { padding: 10px; border: 1px solid #ccc; }
   </style>
 </head>
 <body>
-  <h1>ToDo List</h1>
-  <input type="text" id="task" placeholder="Enter a task" />
-  <button onclick="addTask()">Add</button>
-  <ul id="taskList"></ul>
+  <h1>Student Result System</h1>
+  <input type="text" id="name" placeholder="Enter student name" />
+  <input type="number" id="marks" placeholder="Enter marks" />
+  <button onclick="addResult()">Add</button>
+  <table id="results">
+    <tr><th>Name</th><th>Marks</th></tr>
+  </table>
   <script>
-    const taskList = document.getElementById("taskList");
-    function addTask() {
-      const taskInput = document.getElementById("task");
-      const task = taskInput.value.trim();
-      if (task) {
-        const li = document.createElement("li");
-        li.textContent = task;
-        li.onclick = () => li.remove();
-        taskList.appendChild(li);
-        taskInput.value = '';
+    function addResult() {
+      const name = document.getElementById("name").value;
+      const marks = document.getElementById("marks").value;
+      const table = document.getElementById("results");
+      if (name && marks) {
+        const row = table.insertRow(-1);
+        row.insertCell(0).innerText = name;
+        row.insertCell(1).innerText = marks;
+        document.getElementById("name").value = '';
+        document.getElementById("marks").value = '';
       }
     }
   </script>
